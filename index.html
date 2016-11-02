@@ -2,18 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>MSE tests</title>
+        <title>MSE audio mp4a.6B test</title>
     </head>
     <body>
-        <h1>MSE tests</h1>
+        <h1>MSE audio mp4a.6B MS Edge test</h1>
         <ul>
             <li id="mp4-mp3">
-                <h2>MP3 inside of a MP4 container</h2>
-				
+                <h2>MP3 inside of a MP4 container through MSE</h2>
+
                 <audio controls></audio>
                 <ul class="console"></ul>
             </li>
-			<audio controls src="test.mp4"></audio>
+            <li>
+                <h2>MP3 inside of a MP4 container as src attribute</h2>
+                <audio controls src="test.mp4"></audio>
+            </li>
+
         </ul>
         <script>
             'use strict';
@@ -51,7 +55,7 @@
                     mediaSource;
 
                 id = `${ mimeType.split(/\//)[1] }-${ codec.toLowerCase() }`;
-				
+
                 if (MediaSource.isTypeSupported(mimeTypeWithCodec)) {
                     log(id, `Audio of type "${ mimeType }" with ${ codec } as a codec seems to be supported.`);
                 } else {
@@ -96,7 +100,7 @@
                         load(file)
                             .then(function (buffer) {
                                 log(id, `The buffer of the file "${ file }" was loaded successfully.`);
-								
+
                                 sourceBuffer.appendBuffer(buffer);
                             })
                             .catch(function () {
@@ -107,7 +111,7 @@
                     }
                 });
             }
-			
+
 			setup('audio/mp4', 'MP3', 'test.mp4', 'audio/mp4; codecs="mp4a.6B"');
         </script>
     </body>
